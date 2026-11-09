@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> IDLE: register_worker
+    IDLE --> BUSY: mark_busy
+    BUSY --> IDLE: complete_task
+    IDLE --> FAILED: mark_failed
+    BUSY --> FAILED: mark_failed
+    IDLE --> STOPPED: mark_stopped
+    BUSY --> STOPPED: mark_stopped
+    FAILED --> STOPPED: mark_stopped
+    STOPPED --> [*]
