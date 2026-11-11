@@ -1,10 +1,84 @@
-# Python-generated files
+#==============================
+#Python
+#==============================
 __pycache__/
-*.py[oc]
-build/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
 dist/
-wheels/
-*.egg-info
+build/
+.eggs/
 
-# Virtual environments
-.venv
+#==============================
+#Virtual environments
+#==============================
+.venv/
+venv/
+env/
+ENV/
+
+#==============================
+#Python tooling
+#==============================
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+
+#==============================
+#Jupyter
+#==============================
+.ipynb_checkpoints/
+
+#==============================
+#IDEs and editors
+#==============================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+#==============================
+#Operating system
+#==============================
+.DS_Store
+Thumbs.db
+*~
+
+#==============================
+#Environment variables / secrets
+#==============================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+#==============================
+#Logs and temporary files
+#==============================
+*.log
+logs/
+tmp/
+temp/
+
+#==============================
+#Build and profiling artifacts
+#==============================
+*.prof
+*.lprof
+.prof
+
+#==============================
+#CUDA / GPU temporary artifacts
+#==============================
+*.ptx
+*.cubin
+*.fatbin
