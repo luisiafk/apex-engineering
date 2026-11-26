@@ -36,7 +36,10 @@ def test_worker_count_respects_configured_limits(monkeypatch):
 
     class FakeResources:
         cpu = SimpleNamespace(available_cores=8)
-        memory = SimpleNamespace(available_mib=8192)
+        memory = SimpleNamespace(
+            available_mib=8192,
+            effective_available_mib=8192,
+        )
 
     monkeypatch.setattr(
         parallel,
@@ -63,7 +66,10 @@ def test_worker_count_rejects_insufficient_memory(monkeypatch):
 
     class FakeResources:
         cpu = SimpleNamespace(available_cores=8)
-        memory = SimpleNamespace(available_mib=500)
+        memory = SimpleNamespace(
+            available_mib=500,
+            effective_available_mib=500,
+        )
 
     monkeypatch.setattr(
         parallel,
@@ -92,3 +98,29 @@ def test_parallel_execution_handles_empty_tasks():
     executor = ParallelExecutor()
 
     assert executor.run(square, []) == []
+
+
+def test_worker_count_uses_effective_available_memory(monkeypatch):
+    from apex.infrastructure.execution import parallel
+
+    class FakeResources:
+        cpu = SimpleNamespace(available_cores=8)
+        memory = SimpleNamespace(
+            available_mib=8192,
+            effective_available_mib=2048,
+        )
+
+    monkeypatch.setattr(
+        parallel,
+        "get_resource_info",
+        lambda: FakeResources(),
+    )
+
+    executor = ParallelExecutor(
+        ParallelConfig(
+            memory_per_worker_mib=1024,
+            reserver_memory_mib=512,
+        )
+    )
+
+    assert executor.get_worker_count() == 1

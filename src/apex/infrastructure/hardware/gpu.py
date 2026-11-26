@@ -51,14 +51,17 @@ def get_gpu_info() -> GPUInfo | None:
             check=True,
             timeout=10,
         )
+        lines = result.stdout.strip().splitlines()
 
-        fields = [field.strip() for field in result.stdout.strip().split(",")]
+        if not lines:
+            return None
+
+        fields = [field.strip() for field in lines[0].split(",")]
 
         if len(fields) != 4:
             return None
 
         name, driver, total_memory, used_memory = fields
-
         cuda_version = None
 
         driver_result = subprocess.run(

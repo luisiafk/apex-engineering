@@ -68,7 +68,12 @@ def _read_cgroup_memory() -> tuple[int, int] | None:
         return None
 
     for entry in cgroups_entries:
-        hierarchy, controllers, relative_path = entry.split(":", 2)
+        parts = entry.split(":", 2)
+
+        if len(parts) != 3:
+            continue
+
+        hierarchy, controllers, relative_path = parts
         relative_path = relative_path.lstrip("/")
 
         # cgroup v2

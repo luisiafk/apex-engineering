@@ -29,7 +29,7 @@ def _get_processor_name() -> str:
         return processor
 
     try:
-        with open("proc/cpuinfo", encoding="utf-8") as cpu_file:
+        with open("/proc/cpuinfo", encoding="utf-8") as cpu_file:
             for line in cpu_file:
                 if line.lower().startswith(("model name", "hardware")):
                     return line.split(":", 1)[1].strip()

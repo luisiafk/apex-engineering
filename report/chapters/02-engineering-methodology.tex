@@ -1,0 +1,185 @@
+
+\chapter{Metodología de ingeniería de software}
+\label{chap:engineering-methodology}
+
+\section{Enfoque de desarrollo}
+
+El desarrollo de APEX sigue un enfoque incremental e iterativo,
+en el que las funcionalidades se incorporan progresivamente
+a partir de componentes independientes.
+
+Este enfoque permite dividir el sistema en unidades de
+responsabilidad bien definidas, facilitando su implementación,
+verificación y evolución.
+
+En lugar de desarrollar simultáneamente todas las capacidades
+previstas para la plataforma, se prioriza la construcción
+de una infraestructura computacional sobre la cual puedan
+incorporarse posteriormente los componentes científicos.
+
+Cada componente desarrollado debe contar con una
+responsabilidad identificable, interfaces definidas y
+mecanismos que permitan verificar su comportamiento.
+
+El proceso de desarrollo contempla las siguientes actividades:
+
+\begin{enumerate}
+    \item Identificación de los requisitos del componente.
+    \item Diseño de su estructura y responsabilidades.
+    \item Definición de los casos de prueba.
+    \item Implementación de la funcionalidad.
+    \item Ejecución de pruebas y análisis estático.
+    \item Corrección de defectos y refinamiento del diseño.
+    \item Integración con el resto de la infraestructura.
+\end{enumerate}
+
+\section{Arquitectura modular}
+
+La arquitectura de APEX se organiza en módulos que agrupan
+funcionalidades relacionadas.
+
+Esta organización busca reducir el acoplamiento entre
+componentes y favorecer la cohesión interna de cada módulo.
+
+La infraestructura computacional inicial se divide
+conceptualmente en las siguientes áreas:
+
+\begin{itemize}
+    \item \textbf{Hardware:} detección de las características
+    y recursos del sistema.
+
+    \item \textbf{Execution:} ejecución de tareas y
+    administración de trabajadores.
+
+    \item \textbf{Logging:} registro estructurado de eventos
+    y operaciones del sistema.
+\end{itemize}
+
+La separación de responsabilidades permite que los
+componentes puedan evolucionar de manera independiente
+siempre que se mantengan sus contratos e interfaces.
+
+Asimismo, proporciona una base para incorporar en el futuro
+subsistemas de simulación, modelado físico y optimización
+computacional.
+
+\section{Desarrollo guiado por pruebas}
+
+Durante el desarrollo de APEX se utiliza el enfoque
+Test-Driven Development (TDD), mediante el cual las pruebas
+se diseñan antes de implementar la funcionalidad
+correspondiente.
+
+El ciclo de desarrollo se basa en tres etapas:
+
+\begin{enumerate}
+    \item \textbf{Red:} escribir una prueba que describa
+    un comportamiento esperado y comprobar que inicialmente
+    falla por la ausencia de la implementación.
+
+    \item \textbf{Green:} desarrollar la implementación
+    mínima necesaria para satisfacer la prueba.
+
+    \item \textbf{Refactor:} mejorar la estructura interna
+    del código sin alterar el comportamiento verificado.
+\end{enumerate}
+
+Este procedimiento permite establecer expectativas
+explícitas sobre el comportamiento de los componentes
+y detectar regresiones durante su evolución.
+
+La suite de pruebas se desarrolla utilizando
+\texttt{pytest}, con pruebas unitarias organizadas
+por componente.
+
+\section{Calidad y análisis estático}
+
+La calidad del código se evalúa mediante herramientas
+complementarias que analizan diferentes propiedades
+del software.
+
+En el estado actual del proyecto se utilizan:
+
+\begin{itemize}
+    \item \textbf{pytest:} ejecución de pruebas automatizadas.
+    \item \textbf{Ruff:} análisis estático y aplicación
+    consistente de convenciones de estilo.
+    \item \textbf{Mypy:} comprobación estática de tipos.
+    \item \textbf{Ruff Formatter:} normalización del formato
+    del código fuente.
+\end{itemize}
+
+Estas herramientas cubren aspectos diferentes
+del proceso de verificación. La ejecución satisfactoria
+de las pruebas no sustituye al análisis estático,
+y ninguno de estos mecanismos demuestra por sí solo
+la corrección científica de los modelos físicos.
+
+Por esta razón, la validación de los componentes
+computacionales y la validación de los modelos matemáticos
+se consideran actividades distintas.
+
+\section{Gestión del código fuente}
+
+El desarrollo utiliza Git como sistema de control de versiones
+y GitHub como plataforma de alojamiento del repositorio.
+
+Se emplean ramas de desarrollo para organizar la
+incorporación de funcionalidades y mantener un historial
+de cambios identificable.
+
+Los commits permiten asociar modificaciones concretas
+con las funcionalidades implementadas.
+
+Esta práctica contribuye a la trazabilidad del desarrollo
+y facilita la identificación de cambios que puedan afectar
+el comportamiento del sistema.
+
+\section{Reproducibilidad y validación}
+
+La reproducibilidad constituye un principio importante
+para el desarrollo de una plataforma orientada a la
+computación científica.
+
+Los resultados computacionales deben poder relacionarse
+con las condiciones bajo las cuales fueron obtenidos,
+incluyendo las configuraciones utilizadas, los parámetros
+de ejecución y las versiones relevantes del software.
+
+En la etapa actual, la verificación de APEX se centra
+principalmente en pruebas automatizadas de sus componentes
+de infraestructura.
+
+En etapas posteriores será necesario incorporar
+procedimientos adicionales de validación numérica
+y científica, incluyendo:
+
+\begin{itemize}
+    \item Comparación con soluciones analíticas cuando
+    estén disponibles.
+    \item Comparación con resultados de referencia
+    publicados.
+    \item Evaluación de convergencia numérica.
+    \item Análisis de sensibilidad respecto a los parámetros
+    del modelo.
+    \item Repetición de experimentos bajo condiciones
+    controladas.
+\end{itemize}
+
+Estos procedimientos serán especialmente relevantes
+cuando se incorporen modelos físicos, simulaciones
+y algoritmos de optimización.
+
+\section{Consideraciones metodológicas}
+
+El enfoque adoptado busca mantener una separación clara
+entre el desarrollo del software, la verificación de su
+implementación y la validación científica de los resultados.
+
+Esta distinción evita interpretar la ausencia de errores
+de programación como evidencia suficiente de que un modelo
+matemático representa correctamente un fenómeno físico.
+
+Por tanto, APEX considera la calidad del software,
+la reproducibilidad computacional y el rigor científico
+como dimensiones complementarias del proceso de desarrollo.

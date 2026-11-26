@@ -1,0 +1,133 @@
+
+\documentclass[12pt,a4paper,oneside]{report}
+
+% --------------------------------------------------
+% Language and encoding
+% --------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% --------------------------------------------------
+% Page layout
+% --------------------------------------------------
+\usepackage[
+    a4paper,
+    left=3cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm
+]{geometry}
+
+\usepackage{setspace}
+\onehalfspacing
+
+% --------------------------------------------------
+% Mathematics and scientific notation
+% --------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+
+\sisetup{
+    output-decimal-marker = {.},
+    per-mode = symbol
+}
+
+% --------------------------------------------------
+% Figures, tables and code
+% --------------------------------------------------
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% --------------------------------------------------
+% References
+% --------------------------------------------------
+\usepackage{csquotes}
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sorting=none
+]{biblatex}
+
+\addbibresource{references.bib}
+
+% --------------------------------------------------
+% Navigation and hyperlinks
+% --------------------------------------------------
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={APEX: Computational Engineering},
+    pdfsubject={Computational Engineering and Scientific Research}
+}
+
+% --------------------------------------------------
+% Document metadata
+% --------------------------------------------------
+\title{
+    \textbf{APEX}\\
+    \large Computational Engineering and Autonomous Design
+    of High-Performance Vehicles
+}
+
+\author{Nombre del autor}
+
+\date{\today}
+
+% --------------------------------------------------
+% Document
+% --------------------------------------------------
+\begin{document}
+
+\begin{titlepage}
+    \centering
+
+    \vspace*{2cm}
+
+    {\Huge\bfseries APEX\par}
+
+    \vspace{0.5cm}
+
+    {\Large Computational Engineering and Autonomous Design
+    of High-Performance Vehicles\par}
+
+    \vspace{2cm}
+
+    {\large Technical and Scientific Report\par}
+
+    \vfill
+
+    {\large Nombre del autor\par}
+
+    \vspace{0.5cm}
+
+    {\large \today\par}
+
+\end{titlepage}
+
+\pagenumbering{roman}
+
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+
+\include{chapters/01-introduction}
+
+% Additional chapters will be included as they are developed.
+
+\printbibliography[heading=bibintoc,title={Referencias bibliográficas}]
+
+\end{document}

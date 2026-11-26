@@ -97,7 +97,8 @@ class ParallelExecutor:
             raise RuntimeError("Unable to retrieve memory information.")
         else:
             usable_memory = (
-                resources.memory.available_mib - self.config.reserver_memory_mib
+                resources.memory.effective_available_mib
+                - self.config.reserver_memory_mib
             )
 
         memory_limit = usable_memory // self.config.memory_per_worker_mib
